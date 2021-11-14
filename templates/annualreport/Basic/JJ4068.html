@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" itype="text/css" id="easyuiTheme" href="/static/easyui/themes/ui-sunny/easyui.css">
+  <link rel="stylesheet" type="text/css" href="/static/easyui/themes/icon.css">
+  <script type="text/javascript" src="/static/easyui/jquery.min.js"></script>
+  <script type="text/javascript" src="/static/easyui/jquery.easyui.min.js"></script>
+  <script type="text/javascript" src="/static/easyui/locale/easyui-lang-zh_CN.js"></script>
+</head>
+
+<body class="easyui-layout">
+  <div data-options="region:'north',title:'查询条件'," style="height:20%;width:100%">
+    <form action="" method="post">
+      {% csrf_token %}
+      <h3>{{dic.mytitle}}</h3>
+      {{dic.card}} <input type="text" name="PA1" id="PA1">
+      {{dic.name}} <input type="text" name="PA2" id="PA2">
+    </form>
+    <button class="btn">查询</button>
+
+  </div>
+  <div data-options="region:'center',title:'查询结果'" style="padding:5px;">
+    <table id="dg" class="easyui-datagrid" style="width:100%;height:100%" data-options="fitColumns:true,singleSelect:true, pagination:true,rownumbers:true,pageSize:30">
+      <thead>
+        <tr>
+          <th data-options="field:'a1'">{{dic.table_title.0}}</th>
+          <th data-options="field:'a2'">{{dic.table_title.1}}</th>
+          <th data-options="field:'a3'">{{dic.table_title.2}}</th>
+          <th data-options="field:'a4'">{{dic.table_title.3}}</th>
+          <th data-options="field:'a5'">{{dic.table_title.4}}</th>
+          <th data-options="field:'a6'">{{dic.table_title.5}}</th>
+          <th data-options="field:'a7'">{{dic.table_title.6}}</th>
+          <th data-options="field:'a8'">{{dic.table_title.7}}</th>
+          <th data-options="field:'a9'">{{dic.table_title.8}}</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <script>
+    //获取查询数据
+    $('.btn').click(function() {
+      var options = $('#dg').datagrid('getPager').data("pagination").options; //获取每页状态
+      //var total = options.total;
+      //console.log(total);
+      $.ajax({
+        url: "ajax/",
+        type: "POST",
+        data: {
+          "PA1": $("#PA1").val(),
+          "PA2": $("#PA2").val(),
+          "pageNumber": options.pageNumber, //当前页数
+          "pageSize": options.pageSize, //每页的记录数（行数）
+          'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').val()
+        },
+        success: function(data) {
+          var jsondata = $.parseJSON(data);
+  $('#dg').datagrid({loadFilter:pagerFilter}).datagrid('loadData', jsondata);
+        },
+        error: function(k) {
+          alert("对不起，未查询到数据，no");
+        }
+      })
+    });
+  </script>
+
+   <script>
+
+  function pagerFilter(data){
+  if (typeof data.length == 'number' && typeof data.splice == 'function'){ // 判断数据是否是数组
+  data = {
+  total: data.length,
+  rows: data
+
+  }
+  }
+  var dg = $(this);
+  var opts = dg.datagrid('options');
+  var pager = dg.datagrid('getPager');
+  pager.pagination({
+  onSelectPage:function(pageNum, pageSize){
+  opts.pageNumber = pageNum;
+  opts.pageSize = pageSize;
+  pager.pagination('refresh',{
+  pageNumber:pageNum,
+  pageSize:pageSize
+
+  });
+  dg.datagrid('loadData',data);
+
+  }
+
+  });
+  if (!data.originalRows){
+  data.originalRows = (data.rows);
+
+  }
+  var start = (opts.pageNumber-1)*parseInt(opts.pageSize);
+  var end = start + parseInt(opts.pageSize);
+  data.rows = (data.originalRows.slice(start, end));
+  return data;
+
+  }
+  </script>
+</body>
+
+</html>

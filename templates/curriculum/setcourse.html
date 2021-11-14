@@ -1,0 +1,40 @@
+{%extends "curriculum/base.html" %}
+{% block mainbody %}
+
+<table id="dg"  style="width:100%;height:95%"
+				toolbar="#toolbar" pagination="true" idField="id"
+								     rownumbers="true" fitColumns="true" singleSelect="true">
+  <thead>
+    <tr>
+      <th field="level" checkbox="true" width="50" editor="{type:'validatebox',options:{required:true}}">代码</th>
+      <th field="code" width="50" editor="{type:'validatebox',options:{required:true}}">全称</th>
+      <th field="name" width="50" editor="{type:'validatebox',options:{required:true}}">简称</th>
+      <th field="num" width="50" editor="{type:'validatebox',options:{required:true}}">数量</th>
+    </tr>
+  </thead>
+</table>
+<div id="toolbar">
+  <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="javascript:$('#dg').edatagrid('addRow')">新增科目</a>
+  <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="javascript:$('#dg').edatagrid('destroyRow')">删除</a>
+  <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="javascript:$('#dg').edatagrid('saveRow')">保存</a>
+  <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-excel" plain="true" onclick="javascript:$('#dg').edatagrid('cancelRow')">从Excel模板导入</a>
+  <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-undo" plain="true" onclick="javascript:$('#dg').edatagrid('cancelRow')">取消</a>
+</div>
+<script type="text/javascript">
+  $(function(){
+      $('#dg').edatagrid({
+	  data:{{dic.data|safe}},
+	  saveUrl: 'save_user.php',
+	  updateUrl: 'update_user.php',
+	  destroyUrl: 'destroy_user.php'
+	});
+    });
+</script>
+<script>
+
+  $('#cc').combobox({
+      onChange(){
+	}
+    });
+</script>
+{% endblock %}

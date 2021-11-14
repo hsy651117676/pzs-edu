@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<meta charset="utf-8">
+    <link rel="shortcut icon" href="/static/img/faviocn.ico">
+	<link rel="stylesheet" type="text/css" href="/static/easyui/themes/icon.css">
+	<script type="text/javascript" src="/static/easyui/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/easyui/jquery.easyui.min.js"></script>
+    </head>
+    <body >
+	<h3>用户登录</h3>
+	<form action="" method="post" id="myform">
+	    {% csrf_token %}
+	    <input type="text" name="username" id="username">
+	    <input type="text" name="password" id="password">
+	    <input class="easyui-passwordbox"  type="text" name="pswd" id="pswd">
+	    <input type="submit" id="loginbtn" value="登录">
+	</form>
+	<button class="btn" onclick="lps()">六盘水市</button>
+	<button class="btn" onclick="pzs()">盘州市</button>
+	<button class="btn" onclick="yzjd()">亦资街道</button>
+	<button class="btn" onclick="num9school()">第九小学</button>
+	<button class="btn" onclick="systemlogin()">测试系统管理员登录</button>
+	<button class="btn" onclick="zxxlogin()">测试中心校人员登录</button>
+	<button class="btn" onclick="userlogin()">测试个人用户凳录</button>
+    </body>
+    <script>
+	var obj1=document.getElementById("username");
+	var obj2=document.getElementById("password");
+	var ww=document.getElementById("loginbtn");
+	function test() { document.getElementById("myform").submit(); }
+	function pzs(){ obj1.value="520281000000"; obj2.value="hshy795416"; test(); }
+	function yzjd(){ obj1.value="520281001000"; obj2.value="hshy795416"; test(); }
+	function num9school(){ obj1.value="2152005204"; obj2.value="hshy795416"; test(); }
+	function lps(){ obj1.value="520200000000"; obj2.value="hshy795416"; test(); }
+	function systemlogin(){ obj1.value="admin"; obj2.value="hshy795416"; test(); }
+	function zxxlogin(){ obj1.value="zxx"; obj2.value="pzsjyjzxx"; test(); }
+	function userlogin(){ obj1.value="user"; obj2.value="pzsjyjuser"; test(); }
+
+    </script>
+
+</html>

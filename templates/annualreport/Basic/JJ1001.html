@@ -1,0 +1,39 @@
+{%extends "annualreport/Basic/base.html" %}
+{% block mainbody %}
+<table border="1px" style="width:100%" >
+  <tr> <td>01</td> <td> 学校（机构）标识码：</td><td colspan="3">{{dic.data.0.c01}}</td> </tr>
+  <tr> <td>02</td> <td> 学校（机构）名称（章)</td><td colspan="3">{{dic.data.0.c02}}</td></tr>
+  <tr> <td>03</td> <td> 营利性民办学校（机构）简称</td><td colspan="3"><input value="{{dic.data.0.c03}}"/></td></tr>
+    <tr> <td>04</td> <td> 学校（机构）英文名称</td><td colspan="3"><input value="{{dic.data.0.c04}}"/></td> </tr>
+    <tr> <td>05</td> <td rowspan="6"> 学校（机构）地址 </td><td>省（自治区、直辖市）</td><td colspan="2">{{dic.data.0.c05}}</td> </tr>
+    <tr> <td>06</td> <td>地(区、市、州、盟) </td><td colspan="2">{{dic.data.0.c06}}</td> </tr>
+    <tr> <td>07</td> <td>县(市、区、旗) </td><td colspan="2">{{dic.data.0.c07}}</td> </tr>
+    <tr> <td>08</td> <td>乡(镇、街道) </td><td colspan="2">{{dic.data.0.c08}}</td> </tr>
+    <tr> <td>09</td> <td>村委会(居委会) </td><td colspan="2">{{dic.data.0.c09}}</td> </tr>
+    <tr> <td>10</td> <td>门牌号 </td><td colspan="2"><input value="{{dic.data.0.c10}}"/></td> </tr>
+    <tr> <td>11</td> <td rowspan="2">学校（机构）所在地 </td><td>经度 </td><td colspan="2"><input value="{{dic.data.0.c11}}"/></td> </tr>
+    <tr> <td>12</td> <td>纬度 </td><td colspan="2"><input value="{{dic.data.0.c12}}"/></td> </tr>
+    <tr> <td>13</td> <td>学校（机构）驻地城乡类型 </td><td colspan="3">{{dic.data.0.c13}}</td> </tr>
+    <tr> <td>14</td> <td>学校官网网址 </td><td colspan="3">{{dic.data.0.c14}}</td> </tr>
+    <tr> <td>15</td> <td>校(园)长姓名 </td><td><input value="{{dic.data.0.c15}}"/></td><td>校(园)长（签章）</td><td> <input value="{{dic.data.0.c15}}"/></td> </tr>
+    <tr> <td>16</td> <td>统计负责人姓名 </td><td><input value="{{dic.data.0.c16}}"/></td> <td>统计负责人部门</td><td><input value="{{dic.data.0.c16}}"/></td> </tr>
+    <tr> <td>17</td> <td>统计负责人职务 </td><td><input value="{{dic.data.0.c17}}"/></td> <td>统计负责人联系电话</td><td><input value="{{dic.data.0.c17}}"/></td> </tr>
+    <tr> <td>18</td> <td>填表人姓名 </td><td><input value="{{dic.data.0.c18}}"/></td> <td>填表人部门</td><td><input value="{{dic.data.0.c18}}"/></td></tr>
+    <tr> <td>19</td> <td>填表人职务 </td><td><input value="{{dic.data.0.c19}}"/></td> <td>填表人联系电话</td><td><input value="{{dic.data.0.c91}}"/></td></tr>
+    <tr> <td>20</td> <td rowspan="5">联系方式 </td><td>移动电话</td><td colspan="2"><input value="{{dic.data.0.c20}}"/></td> </tr>
+    <tr> <td>21</td> <td>长途区号 </td><td colspan="2"><input value="{{dic.data.0.c21}}"/></td> </tr>
+    <tr> <td>22</td> <td>办公电话 </td><td colspan="2"><input value="{{dic.data.0.c22}}"/></td> </tr>
+    <tr> <td>23</td> <td>单位电子信箱  </td><td colspan="2"><input value="{{dic.data.0.c23}}"/></td> </tr>
+    <tr> <td>24</td> <td>邮政编码 </td><td colspan="2"><input value="{{dic.data.0.c24}}"/></td> </tr>
+    <tr> <td>25</td> <td>学校（机构）属地管理教育行政部门  </td><td colspan="3"><input value="{{dic.data.0.c25}}"/></td> </tr>
+    <tr> <td>26</td> <td>学校（机构）办学类型 </td><td colspan="3"><input value="{{dic.data.0.c26}}"/></td> </tr>
+    <tr> <td>28</td> <td>学校（机构）举办者 </td><td colspan="3"><input value="{{dic.data.0.c28}}"/></td> </tr>
+    <tr> <td>29</td> <td>附设教学班类型 </td><td colspan="3"><input value="{{dic.data.0.c29}}"/></td> </tr>
+    <tr> <td>30</td> <td>通电 </td><td colspan="3"><input value="{{dic.data.0.c30}}"/></td> </tr>
+    <tr> <td>31</td> <td>接入互联网 </td><td colspan="3"><input value="{{dic.data.0.c31}}"/></td> </tr>
+    <tr> <td>32</td> <td>无线网全覆盖 </td><td colspan="3"><input value="{{dic.data.0.c32}}"/></td> </tr>
+    <tr> <td>33</td> <td>学校供水方式 </td><td colspan="3"><input value="{{dic.data.0.c33}}"/></td> </tr>
+    <tr> <td>34</td> <td>学校厕所情况 </td><td colspan="3"><input value="{{dic.data.0.c34}}"/></td> </tr>
+    <tr> <td>35</td> <td>洗手设施 </td><td colspan="3"><input value="{{dic.data.0.c35}}"/></td> </tr>
+    </table>
+{% endblock %}

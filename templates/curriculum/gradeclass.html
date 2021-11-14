@@ -1,0 +1,54 @@
+{%extends "curriculum/base.html" %}
+{% block mainbody %}
+
+<div>
+  <span>办学类型</span>
+  <select id="cc" class="easyui-combobox" name="dept" style="width:200px;" >
+    <option >小学</option>
+    <option>初级中学</option>
+    <option>高级中学</option>
+    <option>完全中学</option>
+    <option>九年一贯制</option>
+    <option>十二年一贯制</option>
+    <option>自定义</option>
+  </select>
+</div>
+<table id="dg"  style="width:100%;height:95%"
+				toolbar="#toolbar" pagination="true" idField="id"
+								     rownumbers="true" fitColumns="true" singleSelect="true">
+  <thead>
+    <tr>
+      <th field="level" checkbox="true" width="50" editor="{type:'validatebox',options:{required:true}}">代码</th>
+      <th field="code" width="50" editor="{type:'validatebox',options:{required:true}}">全称</th>
+      <th field="name" width="50" editor="{type:'validatebox',options:{required:true}}">简称</th>
+      <th field="num" width="50" editor="{type:'validatebox',options:{required:true}}">数量</th>
+    </tr>
+  </thead>
+</table>
+<div id="toolbar">
+  <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="javascript:$('#dg').edatagrid('addRow')">新增年级</a>
+  <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="javascript:$('#dg').edatagrid('addRow')">新增班级</a>
+  <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="javascript:$('#dg').edatagrid('destroyRow')">删除</a>
+  <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="javascript:$('#dg').edatagrid('saveRow')">保存</a>
+  <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-more" plain="true" onclick="javascript:$('#dg').edatagrid('cancelRow')">自动生成班级</a>
+  <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-excel" plain="true" onclick="javascript:$('#dg').edatagrid('cancelRow')">从Excel模板导入</a>
+  <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-undo" plain="true" onclick="javascript:$('#dg').edatagrid('cancelRow')">取消</a>
+</div>
+<script type="text/javascript">
+  $(function(){
+      $('#dg').edatagrid({
+	  data:{{dic.data|safe}},
+	  saveUrl: 'save_user.php',
+	  updateUrl: 'update_user.php',
+	  destroyUrl: 'destroy_user.php'
+	});
+    });
+</script>
+<script>
+
+  $('#cc').combobox({
+      onChange(){
+	}
+    });
+</script>
+{% endblock %}
